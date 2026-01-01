@@ -9,8 +9,8 @@ class $modify(PlayLayerHook, PlayLayer) {
         int m_percentagePrecision;
         bool m_scientificNotation;
     };
-    bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
-        if (!PlayLayer::init(level, useReplay, dontCreateObjects)) return false;
+    void setupHasCompleted() {
+        PlayLayer::setupHasCompleted();
 
         m_fields->m_percentagePrecision = Mod::get()->getSettingValue<int>("percentage-precision");
         m_fields->m_scientificNotation = Mod::get()->getSettingValue<bool>("scientific-notation");
@@ -19,11 +19,11 @@ class $modify(PlayLayerHook, PlayLayer) {
         m_percentageLabel->setAnchorPoint({0.5, 1.0});
         m_percentageLabel->setPositionY(m_percentageLabel->getPositionY() + 8.0f);
         m_percentageLabel->setScale(Mod::get()->getSettingValue<float>("percentage-label-scale"));
-
-        return true;
     }
     void updateProgressbar() {
         PlayLayer::updateProgressbar();
+
+        if (m_player1 == nullptr) return;
 
         // percentage calculators happen here
         cocos2d::CCPoint realPlayerPosition = m_player1->getRealPosition();
