@@ -15,11 +15,6 @@ class $modify(PlayLayerHook, PlayLayer) {
 
         m_fields->m_percentagePrecision = Mod::get()->getSettingValue<int>("percentage-precision");
         m_fields->m_scientificNotation = Mod::get()->getSettingValue<bool>("scientific-notation");
-
-        // setting up percentage label
-        m_percentageLabel->setAnchorPoint({0.5, 1.0});
-        m_percentageLabel->setPositionY(m_percentageLabel->getPositionY() + 8.0f);
-        m_percentageLabel->setScale(Mod::get()->getSettingValue<float>("percentage-label-scale"));
     }
     void updateProgressbar() {
         PlayLayer::updateProgressbar();
