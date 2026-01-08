@@ -1,3 +1,6 @@
+# v1.0.3
+- Internal optimizations
+
 # v1.0.2
 - Cut corners and temporarily removed percentage scale.
 
